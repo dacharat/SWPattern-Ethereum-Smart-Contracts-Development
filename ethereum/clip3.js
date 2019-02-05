@@ -1,7 +1,7 @@
 var Tx = require("ethereumjs-tx");
 const Web3 = require("web3");
 const web3 = new Web3(
-  "https://mainnet.infura.io/v3/f1cac29116bc4eaabe6433584e8b0fe6"
+  "https://ropsten.infura.io/v3/f1cac29116bc4eaabe6433584e8b0fe6"
 );
 
 const account1 = "0xcDb8AEFD4B2114421dcffAA14aAf2038CF43A2Db";
@@ -9,8 +9,10 @@ const account2 = "0x3FDB025d25A027BB3b8FD68502Ea1f89c0850B5a";
 
 const privateKey1 = Buffer.from(process.env.PRIVATE_KEY_1, "hex");
 const privateKey2 = Buffer.from(process.env.PRIVATE_KEY_2, "hex");
+// console.log(process.env.PRIVATE_KEY_1);
+// console.log(process.env.PRIVATE_KEY_2);
 
-web3.eth.getBalance(account1, (err, bal) => {
+web3.eth.getBalance(account1, (err, bal) => {  
   console.log("account 1 balance: ", web3.utils.fromWei(bal, "ether"));
 });
 web3.eth.getBalance(account2, (err, bal) => {
@@ -27,6 +29,8 @@ web3.eth.getBalance(account2, (err, bal) => {
 //     gasPrice: web3.utils.toHex(web3.utils.toWei("10", "gwei"))
 //   };
 
+//   console.log(txObject);
+
 //   // Sign the transaction
 //   const tx = new Tx(txObject);
 //   tx.sign(privateKey1);
@@ -36,6 +40,6 @@ web3.eth.getBalance(account2, (err, bal) => {
 
 //   // Broadcast the transaction
 //   web3.eth.sendSignedTransaction(raw, (err, txHash) => {
-//     console.log("txHash: ", txHash);
+//     console.log("err",err,"txHash: ", txHash);
 //   });
 // });
